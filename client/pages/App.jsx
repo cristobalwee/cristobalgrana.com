@@ -64,6 +64,10 @@ class App extends Component {
     TweenMax.to(object, 0.75, {delay: time, top: "-20px", opacity: "0", ease: Elastic.easeIn.config(2, 0.5)});
   }
 
+  tweenOut(object, time) {
+    TweenMax.to(object, 0.75, {delay: time, top: "20px", opacity: "0", ease: Elastic.easeIn.config(2, 0.5)});
+  }
+
   projectIn(project, time) {
     TweenMax.from(project, 0.75, {delay: time, y: -100, opacity: "0", ease: Elastic.easeOut.config(2, 1)});
   }
@@ -87,6 +91,45 @@ class App extends Component {
 
   renderNext(current, next, tweensOut, tweensIn) {
     var mouse = $("#mouse-anim");
+
+    if (next === current) {
+      return;
+    }
+
+    if (next < current) {
+      if (current === 0) {
+        TweenMax.to($(".nav-bar"), 0.45, {delay: 2.2, top: "0", ease: Power2.easeOut});
+        TweenMax.to($(".position"), 0.45, {delay: 2.2, right: "0", ease: Power2.easeOut});
+        TweenMax.to(mouse, 0.75, {y: 100, opacity: "0", ease: Elastic.easeIn.config(2, 0.5)});
+      }
+
+      if (next === 0) {
+        TweenMax.to($(".nav-bar"), 0.45, {top: "-100px", ease: Power2.easeIn});
+        TweenMax.to($(".position"), 0.45, {right: "-100px", ease: Power2.easeIn});
+        TweenMax.to(mouse, 0.75, {delay: 2.2, y: 0, opacity: "1", ease: Power2.easeOut});
+      }
+
+      if (next === 2) {
+        this.show($("#lines"), 0.1)
+        TweenMax.to($("#lines"), 0.45, {height: "auto", ease: Power2.easeIn});
+      }
+
+      tweensOut.map((elem, i) => {
+        let delay = 0.15 + (0.15 * i);
+        this.tweenOut($(elem), delay);
+      });
+      this.hide($(this.state.positions[current]), 1.6);
+      this.show($(this.state.positions[next]), 1.6);
+      tweensIn.map((elem, i) => {
+        let delay = 1.75 + (0.15 * i);
+        this.resetTween(elem);
+        this.tweenUp($(elem), delay);
+      });
+
+      this.state.currPos = next;
+      console.log(this.state);
+      return;
+    }
 
     if (current === 0) {
       TweenMax.to($(".nav-bar"), 0.45, {delay: 2.2, top: "0", ease: Power2.easeOut});
