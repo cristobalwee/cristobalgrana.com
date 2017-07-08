@@ -97,6 +97,8 @@ class App extends Component {
     }
 
     if (next < current) {
+      tweensOut.reverse();
+
       if (current === 0) {
         TweenMax.to($(".nav-bar"), 0.45, {delay: 2.2, top: "0", ease: Power2.easeOut});
         TweenMax.to($(".position"), 0.45, {delay: 2.2, right: "0", ease: Power2.easeOut});
@@ -128,6 +130,7 @@ class App extends Component {
 
       this.state.currPos = next;
       console.log(this.state);
+      tweensOut.reverse()
       return;
     }
 
