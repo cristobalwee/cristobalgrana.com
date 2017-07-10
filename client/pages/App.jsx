@@ -28,7 +28,8 @@ class App extends Component {
         ["#about-head", "#about-info", "#about-contact"],
         ["#telescope-info", "#telescope-photo"],
         ["#godaddy-info", "#godaddy-photo"]
-      ]
+      ],
+      posOpen: false
     };
     this.scroll = this.scroll.bind(this);
   }
@@ -96,6 +97,47 @@ class App extends Component {
       return;
     }
 
+    switch(next) {
+      case 0:
+        TweenMax.to($(".nav-bar"), 0.45, {top: "-100px", ease: Power2.easeIn});
+        TweenMax.to($(".position"), 0.45, {right: "-100px", ease: Power2.easeIn});
+        TweenMax.to(mouse, 0.75, {delay: 2.2, y: 0, opacity: "1", ease: Power2.easeOut});
+        $("#lines").children().removeClass("current");
+        break;
+      case 1:
+        $("#about-link").addClass("selected");
+        $("#works-link").removeClass("selected");
+        $("#contact-link").removeClass("selected");
+        $("#lines").children().removeClass("current");
+        break;
+      case 2:
+        $("#about-link").removeClass("selected");
+        $("#works-link").addClass("selected");
+        $("#contact-link").removeClass("selected");
+        $("#lines").children().removeClass("current");
+        $("#first-line").addClass("current");
+        break;
+      case 3:
+        $("#about-link").removeClass("selected");
+        $("#works-link").addClass("selected");
+        $("#contact-link").removeClass("selected");
+        $("#lines").children().removeClass("current");
+        $("#second-line").addClass("current");
+        break;
+      case 4:
+        $("#about-link").removeClass("selected");
+        $("#works-link").addClass("selected");
+        $("#contact-link").removeClass("selected");
+        $("#lines").children().removeClass("current");
+        $("#third-line").addClass("current");
+        break;
+      default:
+        $("#about-link").removeClass("selected");
+        $("#works-link").removeClass("selected");
+        $("#contact-link").removeClass("selected");
+        break;
+    }
+
     if (next < current) {
       tweensOut.reverse();
 
@@ -140,15 +182,17 @@ class App extends Component {
       TweenMax.to(mouse, 0.75, {y: 100, opacity: "0", ease: Elastic.easeIn.config(2, 0.5)});
     }
 
-    if (next === 0) {
-      TweenMax.to($(".nav-bar"), 0.45, {top: "-100px", ease: Power2.easeIn});
-      TweenMax.to($(".position"), 0.45, {right: "-100px", ease: Power2.easeIn});
-      TweenMax.to(mouse, 0.75, {delay: 2.2, y: 0, opacity: "1", ease: Power2.easeOut});
+    if (next > 1 && !this.state.posOpen) {
+      $("#lines").css("display", "block");
+      $("#lines").css("opacity", "1");
+      TweenMax.from($("#lines"), 0.45, {height: "0", opacity: "0", ease: Power2.easeIn});
+      this.state.posOpen = true;
     }
 
-    if (next === 2) {
-      this.show($("#lines"), 0.1)
-      TweenMax.to($("#lines"), 0.45, {height: "auto", ease: Power2.easeIn});
+    if (next < 2 && this.state.posOpen) {
+      TweenMax.to($("#lines"), 0.45, {height: "0", opacity: "0", ease: Power2.easeIn});
+      $("#lines").css("display", "none");
+      this.state.posOpen = false;
     }
 
     tweensOut.map((elem, i) => {
@@ -174,14 +218,14 @@ class App extends Component {
           <img className="pointer" onClick={() => this.renderNext(this.state.currPos, 0, this.state.tweens[this.state.currPos], this.state.tweens[0])} src="/public/media/logo.svg"></img>
         </div>
         <div className="position">
-          <p className="pointer" onClick={() => this.renderNext(this.state.currPos, 1, this.state.tweens[this.state.currPos], this.state.tweens[1])}>about</p>
-          <p className="pointer" onClick={() => this.renderNext(this.state.currPos, 2, this.state.tweens[this.state.currPos], this.state.tweens[2])}>works</p>
+          <p id="about-link" className="pointer" onClick={() => this.renderNext(this.state.currPos, 1, this.state.tweens[this.state.currPos], this.state.tweens[1])}>about</p>
+          <p id="works-link" className="pointer" onClick={() => this.renderNext(this.state.currPos, 2, this.state.tweens[this.state.currPos], this.state.tweens[2])}>works</p>
           <span id="lines">
-            <img onClick={() => this.renderNext(this.state.currPos, 2, this.state.tweens[this.state.currPos], this.state.tweens[2])} src="/public/media/line.svg"></img><br></br>
-            <img onClick={() => this.renderNext(this.state.currPos, 3, this.state.tweens[this.state.currPos], this.state.tweens[3])} src="/public/media/line.svg"></img><br></br>
-            <img onClick={() => this.renderNext(this.state.currPos, 4, this.state.tweens[this.state.currPos], this.state.tweens[4])} src="/public/media/line.svg"></img><br></br>
+            <img id="first-line" onClick={() => this.renderNext(this.state.currPos, 2, this.state.tweens[this.state.currPos], this.state.tweens[2])} src="/public/media/line.svg"></img><br></br>
+            <img id="second-line" onClick={() => this.renderNext(this.state.currPos, 3, this.state.tweens[this.state.currPos], this.state.tweens[3])} src="/public/media/line.svg"></img><br></br>
+            <img id="third-line" onClick={() => this.renderNext(this.state.currPos, 4, this.state.tweens[this.state.currPos], this.state.tweens[4])} src="/public/media/line.svg"></img><br></br>
           </span>
-          <p className="pointer" onClick={() => this.renderNext(this.state.currPos, 3, this.state.tweens[this.state.currPos], this.state.tweens[3])}>contact</p>
+          <p id="contact-link" className="pointer" onClick={() => this.renderNext(this.state.currPos, 3, this.state.tweens[this.state.currPos], this.state.tweens[3])}>contact</p>
         </div>
         <div id="landing" className="center">
           <div className="content">
@@ -210,7 +254,7 @@ class App extends Component {
               </span>
               <span className="right">
                 <a href="mailto:hellothere@cristobalgrana.com"><h4 className="inline pointer">Hello</h4></a>&nbsp;&nbsp;
-                <h4 className="inline pointer">Resume</h4>
+                <a href="https://www.slideshare.net/slideshow/embed_code/key/3qbG7iBD0UVgMa" target="_blank"><h4 className="inline pointer">Resume</h4></a>
               </span>
             </div>
           </div>

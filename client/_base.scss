@@ -168,16 +168,22 @@ button {
   p {
     margin-bottom: 0.4rem;
     color: $light-gray;
+    @include transition(all 0.25s ease);
   }
 
-  p:first-child {
+  .selected {
     color: black;
   }
 
-  > span {
-    height: 0;
+  #lines {
+    opacity: 0;
     display: none;
-    @include transition(all 0.5s ease);
+    @include transition(all 0.25s ease);
+
+    .current {
+      width: 2rem;
+      @include transition(all 0.5s ease);
+    }
   }
 
   img {
