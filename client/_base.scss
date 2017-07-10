@@ -169,6 +169,10 @@ button {
     margin-bottom: 0.4rem;
     color: $light-gray;
     @include transition(all 0.25s ease);
+
+    &:hover {
+      color: black;
+    }
   }
 
   .selected {
@@ -178,11 +182,12 @@ button {
   #lines {
     opacity: 0;
     display: none;
+    height: 0;
     @include transition(all 0.25s ease);
 
     .current {
       width: 2rem;
-      @include transition(all 0.5s ease);
+      @include transition(all 0.25s ease);
     }
   }
 

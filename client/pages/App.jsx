@@ -14,6 +14,7 @@ class App extends Component {
     super(props);
     this.state = {
       scrollFlag: true,
+      posOpen: false,
       currPos: 0,
       positions: [
         "#landing",
@@ -28,8 +29,7 @@ class App extends Component {
         ["#about-head", "#about-info", "#about-contact"],
         ["#telescope-info", "#telescope-photo"],
         ["#godaddy-info", "#godaddy-photo"]
-      ],
-      posOpen: false
+      ]
     };
     this.scroll = this.scroll.bind(this);
   }
@@ -158,6 +158,17 @@ class App extends Component {
         TweenMax.to($("#lines"), 0.45, {height: "auto", ease: Power2.easeIn});
       }
 
+      if (next > 1) {
+        TweenMax.to($("#lines"), 0.25, {display: "block", height: "auto", ease: Power2.easeIn});
+        TweenMax.to($("#lines"), 0.25, {delay: 0.25, opacity: "1", ease: Power2.easeIn});
+      }
+
+      else {
+        console.log("2");
+        TweenMax.to($("#lines"), 0.25, {display: "none", opacity: "0", ease: Power2.easeIn});
+        TweenMax.to($("#lines"), 0.25, {delay: 0.25, height: "0", ease: Power2.easeIn});
+      }
+
       tweensOut.map((elem, i) => {
         let delay = 0.15 + (0.15 * i);
         this.tweenOut($(elem), delay);
@@ -182,17 +193,16 @@ class App extends Component {
       TweenMax.to(mouse, 0.75, {y: 100, opacity: "0", ease: Elastic.easeIn.config(2, 0.5)});
     }
 
-    if (next > 1 && !this.state.posOpen) {
+    if (next > 1) {
       $("#lines").css("display", "block");
-      $("#lines").css("opacity", "1");
-      TweenMax.from($("#lines"), 0.45, {height: "0", opacity: "0", ease: Power2.easeIn});
-      this.state.posOpen = true;
+      TweenMax.to($("#lines"), 0.25, {height: "auto", ease: Power2.easeIn});
+      TweenMax.to($("#lines"), 0.25, {delay: 0.25, opacity: "1", ease: Power2.easeIn});
     }
 
-    if (next < 2 && this.state.posOpen) {
-      TweenMax.to($("#lines"), 0.45, {height: "0", opacity: "0", ease: Power2.easeIn});
+    else {
+      TweenMax.to($("#lines"), 0.25, {opacity: "0", ease: Power2.easeIn});
+      TweenMax.to($("#lines"), 0.25, {delay: 0.25, height: "0", ease: Power2.easeIn});
       $("#lines").css("display", "none");
-      this.state.posOpen = false;
     }
 
     tweensOut.map((elem, i) => {
