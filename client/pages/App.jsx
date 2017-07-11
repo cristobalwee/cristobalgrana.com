@@ -22,13 +22,16 @@ class App extends Component {
         "#telescope",
         "#godaddy",
         "#gastronomads",
+        "#foodful",
         "#contact"
       ],
       tweens: [
         ["#landing-head", "#landing-sub-head", "#landing-2-sub-head"],
         ["#about-head", "#about-info", "#about-contact"],
         ["#telescope-info", "#telescope-photo"],
-        ["#godaddy-info", "#godaddy-photo"]
+        ["#godaddy-info", "#godaddy-photo"],
+        ["#gastronomads-info", "#gastronomads-photo"],
+        ["#foodful-info", "#foodful-photo"]
       ]
     };
     this.scroll = this.scroll.bind(this);
@@ -70,11 +73,15 @@ class App extends Component {
   }
 
   projectIn(project, time) {
-    TweenMax.from(project, 0.75, {delay: time, y: -100, opacity: "0", ease: Elastic.easeOut.config(2, 1)});
+    TweenMax.from(project, 0.75, {delay: time, top: "30px", opacity: "0", ease: Elastic.easeOut.config(2, 1)});
   }
 
   projectOut(project, time) {
-    TweenMax.to(project, 0.75, {delay: time, y: 100, opacity: "0", ease: Elastic.easeOut.config(2, 1)});
+    TweenMax.to(project, 0.75, {delay: time, top: "-30px", opacity: "0", ease: Elastic.easeIn.config(2, 0.5)});
+  }
+
+  projectDown(project, time) {
+    TweenMax.to(project, 0.75, {delay: time, top: "30px", opacity: "0", ease: Elastic.easeIn.config(2, 0.5)});
   }
 
   resetTween(object) {
@@ -136,59 +143,19 @@ class App extends Component {
         $("#third-line").addClass("current");
         $("#lines").removeClass("close-lines");
         break;
+      case 5:
+        $("#about-link").removeClass("selected");
+        $("#works-link").addClass("selected");
+        $("#contact-link").removeClass("selected");
+        $("#lines").children().removeClass("current");
+        $("#fourth-line").addClass("current");
+        $("#lines").removeClass("close-lines");
+        break;
       default:
         $("#about-link").removeClass("selected");
         $("#works-link").removeClass("selected");
         $("#contact-link").removeClass("selected");
         break;
-    }
-
-    if (next < current) {
-      tweensOut.reverse();
-
-      if (current === 0) {
-        TweenMax.to($(".nav-bar"), 0.45, {delay: 2.2, top: "0", ease: Power2.easeOut});
-        TweenMax.to($(".position"), 0.45, {delay: 2.2, right: "0", ease: Power2.easeOut});
-        TweenMax.to(mouse, 0.75, {y: 100, opacity: "0", ease: Elastic.easeIn.config(2, 0.5)});
-      }
-
-      if (next === 0) {
-        TweenMax.to($(".nav-bar"), 0.45, {top: "-100px", ease: Power2.easeIn});
-        TweenMax.to($(".position"), 0.45, {right: "-100px", ease: Power2.easeIn});
-        TweenMax.to(mouse, 0.75, {delay: 2.2, y: 0, opacity: "1", ease: Power2.easeOut});
-      }
-
-      if (next === 2) {
-        this.show($("#lines"), 0.1);
-        TweenMax.to($("#lines"), 0.45, {height: "auto", ease: Power2.easeIn});
-      }
-
-      if (next > 1) {
-        TweenMax.to($("#lines"), 0.25, {display: "block", height: "auto", ease: Power2.easeIn});
-        TweenMax.to($("#lines"), 0.25, {delay: 0.25, opacity: "1", ease: Power2.easeIn});
-      }
-
-      else {
-        TweenMax.to($("#lines"), 0.25, {display: "none", opacity: "0", ease: Power2.easeIn});
-        TweenMax.to($("#lines"), 0.25, {delay: 0.25, height: "0", ease: Power2.easeIn});
-      }
-
-      tweensOut.map((elem, i) => {
-        let delay = 0.15 + (0.15 * i);
-        this.tweenOut($(elem), delay);
-      });
-      this.hide($(this.state.positions[current]), 1.6);
-      this.show($(this.state.positions[next]), 1.6);
-      tweensIn.map((elem, i) => {
-        let delay = 1.75 + (0.15 * i);
-        this.resetTween(elem);
-        this.tweenUp($(elem), delay);
-      });
-
-      this.state.currPos = next;
-      console.log(this.state);
-      tweensOut.reverse()
-      return;
     }
 
     if (current === 0) {
@@ -207,6 +174,93 @@ class App extends Component {
       TweenMax.to($("#lines"), 0.25, {opacity: "0", ease: Power2.easeIn});
       TweenMax.to($("#lines"), 0.25, {delay: 0.25, height: "0", ease: Power2.easeIn});
       $("#lines").css("display", "none");
+    }
+
+    if (next === 0) {
+      TweenMax.to($(".nav-bar"), 0.45, {top: "-100px", ease: Power2.easeIn});
+      TweenMax.to($(".position"), 0.45, {right: "-100px", ease: Power2.easeIn});
+      TweenMax.to(mouse, 0.75, {delay: 2.2, y: 0, opacity: "1", ease: Power2.easeOut});
+    }
+
+    if (next === 2) {
+      this.show($("#lines"), 0.1);
+      TweenMax.to($("#lines"), 0.45, {height: "auto", ease: Power2.easeIn});
+    }
+
+    if (next < current) {
+      tweensOut.reverse();
+
+      if (current > 2) {
+        tweensOut.map((elem, i) => {
+          let delay = 0.15 + (0.15 * i);
+          this.projectDown($(elem), delay);
+        });
+        this.hide($(this.state.positions[current]), 1.6);
+        this.show($(this.state.positions[next]), 1.6);
+        tweensIn.map((elem, i) => {
+          let delay = 1.75 + (0.15 * i);
+          this.resetTween(elem);
+          this.tweenUp($(elem), delay);
+        });
+
+        this.state.currPos = next;
+        console.log(this.state);
+        tweensOut.reverse();
+        return;
+      }
+
+      tweensOut.map((elem, i) => {
+        let delay = 0.15 + (0.15 * i);
+        this.tweenOut($(elem), delay);
+      });
+      this.hide($(this.state.positions[current]), 1.6);
+      this.show($(this.state.positions[next]), 1.6);
+      tweensIn.map((elem, i) => {
+        let delay = 1.75 + (0.15 * i);
+        this.resetTween(elem);
+        this.tweenUp($(elem), delay);
+      });
+
+      this.state.currPos = next;
+      console.log(this.state);
+      tweensOut.reverse();
+      return;
+    }
+
+    if (next > 1) {
+      if (current < 2) {
+        tweensOut.map((elem, i) => {
+          let delay = 0.15 + (0.15 * i);
+          this.tweenDown($(elem), delay);
+        });
+        this.hide($(this.state.positions[current]), 1.6);
+        this.show($(this.state.positions[next]), 1.6);
+        tweensIn.map((elem, i) => {
+          let delay = 1.75 + (0.15 * i);
+          this.resetTween(elem);
+          this.projectIn($(elem), delay);
+        });
+
+        this.state.currPos = next;
+        console.log(this.state);
+        return;
+      }
+
+      tweensOut.map((elem, i) => {
+        let delay = 0.15 + (0.15 * i);
+        this.projectOut($(elem), delay);
+      });
+      this.hide($(this.state.positions[current]), 1.6);
+      this.show($(this.state.positions[next]), 1.6);
+      tweensIn.map((elem, i) => {
+        let delay = 1.75 + (0.15 * i);
+        this.resetTween(elem);
+        this.projectIn($(elem), delay);
+      });
+
+      this.state.currPos = next;
+      console.log(this.state);
+      return;
     }
 
     tweensOut.map((elem, i) => {
@@ -238,6 +292,7 @@ class App extends Component {
             <img id="first-line" onClick={() => this.renderNext(this.state.currPos, 2, this.state.tweens[this.state.currPos], this.state.tweens[2])} src="/public/media/line.svg"></img><br></br>
             <img id="second-line" onClick={() => this.renderNext(this.state.currPos, 3, this.state.tweens[this.state.currPos], this.state.tweens[3])} src="/public/media/line.svg"></img><br></br>
             <img id="third-line" onClick={() => this.renderNext(this.state.currPos, 4, this.state.tweens[this.state.currPos], this.state.tweens[4])} src="/public/media/line.svg"></img><br></br>
+            <img id="fourth-line" onClick={() => this.renderNext(this.state.currPos, 5, this.state.tweens[this.state.currPos], this.state.tweens[5])} src="/public/media/line.svg"></img><br></br>
           </span>
           <p id="contact-link" className="pointer" onClick={() => this.renderNext(this.state.currPos, 3, this.state.tweens[this.state.currPos], this.state.tweens[3])}>contact</p>
         </div>
@@ -283,7 +338,7 @@ class App extends Component {
             img="telescope.png"
             number="01"
             color="#404e5c"
-            link="https://github.com/cristobalwee/foodful"/>
+            link="https://github.com/cristobalwee/telescope"/>
         </div>
         <div id="godaddy" className="center">
           <Project
@@ -295,6 +350,30 @@ class App extends Component {
             img="godaddy.png"
             number="02"
             color="#3fb54f"
+            link="https://godaddy.com"/>
+        </div>
+        <div id="gastronomads" className="center">
+          <Project
+            title="Gastronomads"
+            description="Design + Development, Website"
+            info="My brother wants to be a food writer and asked me to make him a simple blog
+            so that he could get some more exposure. I decided to use Meteor so that I could
+            learn another framework."
+            img="gastronomads.png"
+            number="03"
+            color="#838383"
+            link="https://www.gastronomads.co/"/>
+        </div>
+        <div id="foodful" className="center">
+          <Project
+            title="Foodful"
+            description="Design + Development, Website"
+            info="Spawned as a final project for UIUC's CS498RK: The Art of Web Programming,
+            Foodful is a simple platform that connects restaurants and businesses to food banks
+            and charities."
+            img="foodful.png"
+            number="04"
+            color="#d0e8f9"
             link="https://github.com/cristobalwee/foodful"/>
         </div>
       </div>

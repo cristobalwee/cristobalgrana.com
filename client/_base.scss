@@ -183,7 +183,7 @@ button {
     opacity: 0;
     display: none;
     animation: openhorizontal 0.35s both ease-in-out;
-    height: 4rem;
+    height: 5.4rem;
     margin-bottom: 0.4rem;
     @include transition(all 0.25s ease);
 
@@ -213,6 +213,25 @@ button {
       @include transition(all 0.5s ease);
       cursor: pointer;
     }
+  }
+}
+
+#loader {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include transition(all 0.75s ease);
+  display: none;
+
+  img {
+    margin: 0 auto;
+    position: relative;
+    top: 50vh;
+    @include transform(translateY(-50%));
+    animation: load 1s both ease-in-out infinite;
+    height: 10rem;
   }
 }
 
@@ -311,7 +330,7 @@ button {
   }
 }
 
-#telescope, #godaddy {
+#telescope, #godaddy, #gastronomads, #foodful {
   height: 100%;
   width: 100%;
   position: fixed;
@@ -364,13 +383,13 @@ button {
   }
 
   100% {
-    height: 4rem;
+    height: 5.4rem;
   }
 }
 
 @keyframes closehorizontal {
   0% {
-    height: 4rem;
+    height: 5.4rem;
   }
 
   100% {
