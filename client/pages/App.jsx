@@ -103,12 +103,14 @@ class App extends Component {
         TweenMax.to($(".position"), 0.45, {right: "-100px", ease: Power2.easeIn});
         TweenMax.to(mouse, 0.75, {delay: 2.2, y: 0, opacity: "1", ease: Power2.easeOut});
         $("#lines").children().removeClass("current");
+        $("#lines").addClass("close-lines");
         break;
       case 1:
         $("#about-link").addClass("selected");
         $("#works-link").removeClass("selected");
         $("#contact-link").removeClass("selected");
         $("#lines").children().removeClass("current");
+        $("#lines").addClass("close-lines");
         break;
       case 2:
         $("#about-link").removeClass("selected");
@@ -116,6 +118,7 @@ class App extends Component {
         $("#contact-link").removeClass("selected");
         $("#lines").children().removeClass("current");
         $("#first-line").addClass("current");
+        $("#lines").removeClass("close-lines");
         break;
       case 3:
         $("#about-link").removeClass("selected");
@@ -123,6 +126,7 @@ class App extends Component {
         $("#contact-link").removeClass("selected");
         $("#lines").children().removeClass("current");
         $("#second-line").addClass("current");
+        $("#lines").removeClass("close-lines");
         break;
       case 4:
         $("#about-link").removeClass("selected");
@@ -130,6 +134,7 @@ class App extends Component {
         $("#contact-link").removeClass("selected");
         $("#lines").children().removeClass("current");
         $("#third-line").addClass("current");
+        $("#lines").removeClass("close-lines");
         break;
       default:
         $("#about-link").removeClass("selected");
@@ -154,7 +159,7 @@ class App extends Component {
       }
 
       if (next === 2) {
-        this.show($("#lines"), 0.1)
+        this.show($("#lines"), 0.1);
         TweenMax.to($("#lines"), 0.45, {height: "auto", ease: Power2.easeIn});
       }
 
@@ -164,7 +169,6 @@ class App extends Component {
       }
 
       else {
-        console.log("2");
         TweenMax.to($("#lines"), 0.25, {display: "none", opacity: "0", ease: Power2.easeIn});
         TweenMax.to($("#lines"), 0.25, {delay: 0.25, height: "0", ease: Power2.easeIn});
       }
