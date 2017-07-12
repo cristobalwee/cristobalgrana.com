@@ -14,7 +14,6 @@ class App extends Component {
     super(props);
     this.state = {
       scrollFlag: true,
-      posOpen: false,
       currPos: 0,
       positions: [
         "#landing",
@@ -31,7 +30,8 @@ class App extends Component {
         ["#telescope-info", "#telescope-photo"],
         ["#godaddy-info", "#godaddy-photo"],
         ["#gastronomads-info", "#gastronomads-photo"],
-        ["#foodful-info", "#foodful-photo"]
+        ["#foodful-info", "#foodful-photo"],
+        ["#contact-form"]
       ]
     };
     this.scroll = this.scroll.bind(this);
@@ -73,15 +73,15 @@ class App extends Component {
   }
 
   projectIn(project, time) {
-    TweenMax.from(project, 0.75, {delay: time, top: "30px", opacity: "0", ease: Elastic.easeOut.config(2, 1)});
+    TweenMax.from(project, 0.4, {delay: time, top: "30px", opacity: "0", ease: Back.easeOut.config(4, 0.1)});
   }
 
   projectOut(project, time) {
-    TweenMax.to(project, 0.75, {delay: time, top: "-30px", opacity: "0", ease: Elastic.easeIn.config(2, 0.5)});
+    TweenMax.to(project, 0.4, {delay: time, top: "-30px", opacity: "0", ease: Back.easeIn.config(4, 0.1)});
   }
 
   projectDown(project, time) {
-    TweenMax.to(project, 0.75, {delay: time, top: "30px", opacity: "0", ease: Elastic.easeIn.config(2, 0.5)});
+    TweenMax.to(project, 0.4, {delay: time, top: "30px", opacity: "0", ease: Back.easeIn.config(4, 0.1)});
   }
 
   resetTween(object) {
@@ -375,6 +375,11 @@ class App extends Component {
             number="04"
             color="#d0e8f9"
             link="https://github.com/cristobalwee/foodful"/>
+        </div>
+        <div id="contact" className="center">
+          <div id="contact-form">
+
+          </div>
         </div>
       </div>
     );
