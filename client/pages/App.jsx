@@ -38,26 +38,44 @@ class App extends Component {
   }
 
   componentDidMount() {
-    var landingHead = $("#landing-head");
-    var landingSubHead = $("#landing-sub-head");
-    var landingSubHead2 = $("#landing-2-sub-head");
+    const landingHead = $("#landing-head");
+    const landingSubHead = $("#landing-sub-head");
+    const landingSubHead2 = $("#landing-2-sub-head");
     this.tweenUp(landingHead, 0.15);
     this.tweenUp(landingSubHead, 0.3);
     this.tweenUp(landingSubHead2, 0.45);
+    let flag = true;
 
-    // $("body").bind("mousewheel", this.scroll);
-    // $("body").bind("mousewheel", function(e) {
-    //   console.log(this.state);
-    //   if (this.state.scrollFlag) {
-    //     console.log("prescroll");
-    //     this.setState({scrollFlag: false})
-    //     return false;
-    //   }
-    // });
+    $("body").bind("mousewheel", (e) => {
+      if (flag) {
+        if(e.originalEvent.wheelDelta /120 < 0) {
+          this.scroll(true);
+        }
+        if (e.originalEvent.wheelDelta /120 > 0) {
+          this.scroll(false);
+        }
+        flag = false;
+        setTimeout(() => {
+          console.log("scrolled");
+          flag = true;
+        }, 2000);
+      }
+    });
   }
 
-  scroll() {
-    this.renderNext(0, 1, ["#landing-head", "#landing-sub-head", "#landing-2-sub-head"], ["#about-head", "#about-info", "#about-contact"]);
+  scroll(down) {
+    if (down) {
+      if (this.state.currPos === 6) {
+        return;
+      }
+      this.renderNext(this.state.currPos, this.state.currPos + 1, this.state.tweens[this.state.currPos], this.state.tweens[this.state.currPos + 1]);
+    }
+    else {
+      if (this.state.currPos === 0) {
+        return;
+      }
+      this.renderNext(this.state.currPos, this.state.currPos - 1, this.state.tweens[this.state.currPos], this.state.tweens[this.state.currPos - 1]);
+    }
   }
 
   tweenUp(object, time) {
