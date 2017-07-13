@@ -91,15 +91,15 @@ class App extends Component {
   }
 
   projectIn(project, time) {
-    TweenMax.from(project, 0.4, {delay: time, top: "30px", opacity: "0", ease: Back.easeOut.config(4, 0.1)});
+    TweenMax.from(project, 0.75, {delay: time, top: "20px", opacity: "0", ease: Elastic.easeOut.config(2, 1)});
   }
 
   projectOut(project, time) {
-    TweenMax.to(project, 0.4, {delay: time, top: "-30px", opacity: "0", ease: Back.easeIn.config(4, 0.1)});
+    TweenMax.to(project, 0.75, {delay: time, top: "-20px", opacity: "0", ease: Elastic.easeIn.config(2, 0.5)});
   }
 
   projectDown(project, time) {
-    TweenMax.to(project, 0.4, {delay: time, top: "30px", opacity: "0", ease: Back.easeIn.config(4, 0.1)});
+    TweenMax.to(project, 0.75, {delay: time, top: "20px", opacity: "0", ease: Elastic.easeIn.config(2, 0.5)});
   }
 
   resetTween(object) {
