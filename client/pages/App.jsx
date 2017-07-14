@@ -56,7 +56,6 @@ class App extends Component {
         }
         flag = false;
         setTimeout(() => {
-          console.log("scrolled");
           flag = true;
         }, 2000);
       }
@@ -128,46 +127,50 @@ class App extends Component {
         TweenMax.to($(".position"), 0.45, {right: "-100px", ease: Power2.easeIn});
         TweenMax.to(mouse, 0.75, {delay: 2.2, y: 0, opacity: "1", ease: Power2.easeOut});
         $("#lines").children().removeClass("current");
-        $("#lines").addClass("close-lines");
+        TweenMax.to($("#lines"), 0.35, {height: 0, opacity: "0", display: "none"});
         break;
       case 1:
         $("#about-link").addClass("selected");
         $("#works-link").removeClass("selected");
         $("#contact-link").removeClass("selected");
         $("#lines").children().removeClass("current");
-        $("#lines").addClass("close-lines");
+        TweenMax.to($("#lines"), 0.35, {height: 0, opacity: "0", display: "none"});
         break;
       case 2:
         $("#about-link").removeClass("selected");
         $("#works-link").addClass("selected");
         $("#contact-link").removeClass("selected");
         $("#lines").children().removeClass("current");
-        $("#first-line").addClass("current");
-        $("#lines").removeClass("close-lines");
+        setTimeout(() => {
+          $("#first-line").addClass("current");
+        }, 1750);
         break;
       case 3:
         $("#about-link").removeClass("selected");
         $("#works-link").addClass("selected");
         $("#contact-link").removeClass("selected");
         $("#lines").children().removeClass("current");
-        $("#second-line").addClass("current");
-        $("#lines").removeClass("close-lines");
+        setTimeout(() => {
+          $("#second-line").addClass("current");
+        }, 1750);
         break;
       case 4:
         $("#about-link").removeClass("selected");
         $("#works-link").addClass("selected");
         $("#contact-link").removeClass("selected");
         $("#lines").children().removeClass("current");
-        $("#third-line").addClass("current");
-        $("#lines").removeClass("close-lines");
+        setTimeout(() => {
+          $("#third-line").addClass("current");
+        }, 1750);
         break;
       case 5:
         $("#about-link").removeClass("selected");
         $("#works-link").addClass("selected");
         $("#contact-link").removeClass("selected");
         $("#lines").children().removeClass("current");
-        $("#fourth-line").addClass("current");
-        $("#lines").removeClass("close-lines");
+        setTimeout(() => {
+          $("#fourth-line").addClass("current");
+        }, 1750);
         break;
       default:
         $("#about-link").removeClass("selected");
@@ -179,20 +182,20 @@ class App extends Component {
     if (current === 0) {
       TweenMax.to($(".nav-bar"), 0.45, {delay: 2.2, top: "0", ease: Power2.easeOut});
       TweenMax.to($(".position"), 0.45, {delay: 2.2, right: "0", ease: Power2.easeOut});
-      TweenMax.to(mouse, 0.75, {y: 100, opacity: "0", ease: Elastic.easeIn.config(2, 0.5)});
+      TweenMax.to(mouse, 0.75, {y: 50, opacity: "0", ease: Elastic.easeIn.config(2, 0.5)});
     }
 
-    if (next > 1) {
-      $("#lines").css("display", "block");
-      TweenMax.to($("#lines"), 0.25, {height: "auto", ease: Power2.easeIn});
-      TweenMax.to($("#lines"), 0.25, {delay: 0.25, opacity: "1", ease: Power2.easeIn});
-    }
-
-    else {
-      TweenMax.to($("#lines"), 0.25, {opacity: "0", ease: Power2.easeIn});
-      TweenMax.to($("#lines"), 0.25, {delay: 0.25, height: "0", ease: Power2.easeIn});
-      $("#lines").css("display", "none");
-    }
+    // if (next > 1) {
+    //   $("#lines").css("display", "block");
+    //   TweenMax.to($("#lines"), 0.25, {height: "auto", ease: Power2.easeIn});
+    //   TweenMax.to($("#lines"), 0.25, {delay: 0.25, opacity: "1", ease: Power2.easeIn});
+    // }
+    //
+    // else {
+    //   TweenMax.to($("#lines"), 0.25, {opacity: "0", ease: Power2.easeIn});
+    //   TweenMax.to($("#lines"), 0.25, {delay: 0.25, height: "0", ease: Power2.easeIn});
+    //   $("#lines").css("display", "none");
+    // }
 
     if (next === 0) {
       TweenMax.to($(".nav-bar"), 0.45, {top: "-100px", ease: Power2.easeIn});

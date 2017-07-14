@@ -182,7 +182,7 @@ button {
   #lines {
     opacity: 0;
     display: none;
-    animation: openhorizontal 0.4s both ease-in-out;
+    animation: openhorizontal 0.35s both ease-in-out;
     height: 5.4rem;
     margin-bottom: 0.4rem;
     @include transition(all 0.25s ease);
