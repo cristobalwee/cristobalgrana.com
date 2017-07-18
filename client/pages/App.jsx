@@ -164,6 +164,10 @@ class App extends Component {
         }, 1750);
         break;
       case 5:
+        if (current === 6) {
+          this.show($("#lines"), 0.1);
+          TweenMax.to($("#lines"), 0.45, {height: "auto", ease: Power2.easeIn});
+        }
         $("#about-link").removeClass("selected");
         $("#works-link").addClass("selected");
         $("#contact-link").removeClass("selected");
@@ -171,6 +175,13 @@ class App extends Component {
         setTimeout(() => {
           $("#fourth-line").addClass("current");
         }, 1750);
+        break;
+      case 6:
+        $("#about-link").removeClass("selected");
+        $("#works-link").removeClass("selected");
+        $("#contact-link").addClass("selected");
+        $("#lines").children().removeClass("current");
+        TweenMax.to($("#lines"), 0.35, {height: 0, opacity: "0", display: "none"});
         break;
       default:
         $("#about-link").removeClass("selected");
@@ -315,7 +326,7 @@ class App extends Component {
             <img id="third-line" onClick={() => this.renderNext(this.state.currPos, 4, this.state.tweens[this.state.currPos], this.state.tweens[4])} src="/public/media/line.svg"></img><br></br>
             <img id="fourth-line" onClick={() => this.renderNext(this.state.currPos, 5, this.state.tweens[this.state.currPos], this.state.tweens[5])} src="/public/media/line.svg"></img><br></br>
           </span>
-          <p id="contact-link" className="pointer" onClick={() => this.renderNext(this.state.currPos, 3, this.state.tweens[this.state.currPos], this.state.tweens[3])}>contact</p>
+          <p id="contact-link" className="pointer" onClick={() => this.renderNext(this.state.currPos, 6, this.state.tweens[this.state.currPos], this.state.tweens[6])}>contact</p>
         </div>
         <div id="landing" className="center">
           <div className="content">
@@ -399,7 +410,16 @@ class App extends Component {
         </div>
         <div id="contact" className="center">
           <div id="contact-form">
-
+            <form className="content">
+              <h2>Let's talk</h2>
+              <p>Name</p>
+              <input type="text"/>
+              <p>Email</p>
+              <input type="email"/>
+              <p>Comments</p>
+              <textarea name="comments" cols="40" rows="2"></textarea>
+              <button>Send</button>
+            </form>
           </div>
         </div>
       </div>
