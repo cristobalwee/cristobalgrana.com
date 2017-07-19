@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "css-loader": "^0.28.4",
+    "express": "^4.15.3",
     "extract-text-webpack-plugin": "^2.1.2",
     "gsap": "^1.20.2",
     "html-webpack-plugin": "^2.29.0",
