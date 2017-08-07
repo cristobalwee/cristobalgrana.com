@@ -11,6 +11,7 @@
     "start": "NODE_ENV=production webpack -p --config webpack.production.config.js"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "css-loader": "^0.28.4",
     "express": "^4.15.3",
     "extract-text-webpack-plugin": "^2.1.2",

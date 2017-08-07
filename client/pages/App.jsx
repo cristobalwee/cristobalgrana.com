@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import '../styles.scss';
 import { TimelineMax, TweenMax } from 'gsap';
 import $ from 'jquery';
+import axios from 'axios';
 
 import Project from '../components/project.jsx';
 
@@ -151,6 +152,18 @@ class App extends Component {
 
   show(object, time) {
     TweenMax.to(object, 0.1, {delay: time, display: "block", opacity: "1"});
+  }
+
+  sendMail() {
+    console.log($("#input-name").val());
+
+    axios.get("http://127.0.0.1:3000/")
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   renderNext(current, next, tweensOut, tweensIn) {
@@ -402,7 +415,7 @@ class App extends Component {
               </span>
               <span className="right">
                 <a href="mailto:hellothere@cristobalgrana.com"><h4 className="inline pointer">Hello</h4></a>&nbsp;&nbsp;
-                <a href="https://www.slideshare.net/slideshow/embed_code/key/3qbG7iBD0UVgMa" target="_blank"><h4 className="inline pointer">Resume</h4></a>
+                <a href="/public/media/resume.pdf" target="_blank"><h4 className="inline pointer">Resume</h4></a>
               </span>
             </div>
           </div>
@@ -457,16 +470,16 @@ class App extends Component {
         </div>
         <div id="contact" className="center">
           <div id="contact-form">
-            <form className="content">
+            <div className="content">
               <h2>Let's talk</h2>
               <p>Name</p>
-              <input type="text"/>
+              <input id="input-name" type="text"/>
               <p>Email</p>
-              <input type="email"/>
+              <input id="input-email" type="email"/>
               <p>Comments</p>
-              <textarea name="comments" cols="40" rows="2"></textarea>
-              <button>Send</button>
-            </form>
+              <textarea id="input-comments" name="comments" cols="40" rows="2"></textarea>
+              <button onClick={this.sendMail.bind(this)}>Send</button>
+            </div>
           </div>
         </div>
       </div>
