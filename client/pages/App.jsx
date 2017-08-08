@@ -47,41 +47,6 @@ class App extends Component {
     this.tweenUp(landingSubHead2, 0.45);
     let flag = true;
 
-    // const subHead1 = $("#change-text-1");
-    // const subHead2 = $("#change-text-2");
-    // const subHead3 = $("#change-text-3");
-    // const subHead4 = $("#change-text-4");
-    // const subHead5 = $("#change-text-5");
-    // const subHead6 = $("#change-text-6");
-    //
-    // this.tweenDown(landingSubHead2, 0.6);
-    // this.hide(landingSubHead2, 0.76);
-    // let tl = new TimelineMax({repeat:15});
-    // tl.add(TweenMax.from(subHead1, 0.75, {top: "5px", opacity: "0", ease: Elastic.easeOut.config(2, 1)}));
-    // tl.add(TweenMax.to(subHead1, 0.75, {top: "-5px", opacity: "0", ease: Elastic.easeIn.config(2, 0.5)}));
-    // tl.add(TweenMax.to(subHead1, 0.1, {display: "none"}));
-    // tl.add(TweenMax.to(subHead2, 0.1, {display: "block", opacity: "1"}));
-    // tl.add(TweenMax.from(subHead2, 0.75, {top: "5px", opacity: "0", ease: Elastic.easeOut.config(2, 1)}));
-    // tl.add(TweenMax.to(subHead2, 0.75, {top: "-5px", opacity: "0", ease: Elastic.easeIn.config(2, 0.5)}));
-    // tl.add(TweenMax.to(subHead2, 0.1, {display: "none"}));
-    // tl.add(TweenMax.to(subHead3, 0.1, {display: "block", opacity: "1"}));
-    // tl.add(TweenMax.from(subHead3, 0.75, {top: "5px", opacity: "0", ease: Elastic.easeOut.config(2, 1)}));
-    // tl.add(TweenMax.to(subHead3, 0.75, {top: "-5px", opacity: "0", ease: Elastic.easeIn.config(2, 0.5)}));
-    // tl.add(TweenMax.to(subHead3, 0.1, {display: "none"}));
-    // tl.add(TweenMax.to(subHead4, 0.1, {display: "block", opacity: "1"}));
-    // tl.add(TweenMax.from(subHead4, 0.75, {top: "5px", opacity: "0", ease: Elastic.easeOut.config(2, 1)}));
-    // tl.add(TweenMax.to(subHead4, 0.75, {top: "-5px", opacity: "0", ease: Elastic.easeIn.config(2, 0.5)}));
-    // tl.add(TweenMax.to(subHead4, 0.1, {display: "none"}));
-    // tl.add(TweenMax.to(subHead5, 0.1, {display: "block", opacity: "1"}));
-    // tl.add(TweenMax.from(subHead5, 0.75, {top: "5px", opacity: "0", ease: Elastic.easeOut.config(2, 1)}));
-    // tl.add(TweenMax.to(subHead5, 0.75, {top: "-5px", opacity: "0", ease: Elastic.easeIn.config(2, 0.5)}));
-    // tl.add(TweenMax.to(subHead5, 0.1, {display: "none"}));
-    // tl.add(TweenMax.to(subHead6, 0.1, {display: "block", opacity: "1"}));
-    // tl.add(TweenMax.from(subHead6, 0.75, {top: "5px", opacity: "0", ease: Elastic.easeOut.config(2, 1)}));
-    // tl.add(TweenMax.to(subHead6, 0.75, {top: "-5px", opacity: "0", ease: Elastic.easeIn.config(2, 0.5)}));
-    // tl.add(TweenMax.to(subHead6, 0.1, {display: "none"}));
-    // tl.add(TweenMax.to(subHead1, 0.1, {display: "block", opacity: "1"}));
-
     $("body").bind("mousewheel", (e) => {
       if (flag) {
         if(e.originalEvent.wheelDelta /120 < 0) {
@@ -385,14 +350,6 @@ class App extends Component {
             <h1 id="landing-head">Hello there</h1>
             <h3 id="landing-sub-head">My name is Cristobal Graña, and I'm a</h3>
             <h3 id="landing-2-sub-head">Student at UIUC</h3>
-            <div className="change-text">
-              <h3 id="change-text-1">Frontend Web developer</h3>
-              <h3 id="change-text-2">UI/UX Designer</h3>
-              <h3 id="change-text-3">Private Pilot</h3>
-              <h3 id="change-text-4">Trivia Enthusiast</h3>
-              <h3 id="change-text-5">Alliteration Advocate</h3>
-              <h3 id="change-text-6">Student at UIUC</h3>
-            </div>
           </div>
           <div id="mouse-anim" className="bottom center expanded responsivehide">
             <div className="mouse center link" onClick={this.scroll}>
