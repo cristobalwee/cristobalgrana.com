@@ -123,6 +123,7 @@ button {
   width: 100%;
   padding: 3rem;
   z-index: 10;
+  text-align: left;
 
   img {
     height: 3.5rem;
@@ -172,13 +173,36 @@ button {
 .mobile-project {
   position: relative;
   height: 75vh;
-  width: 80vw;
+  color: white;
 
   img {
-    height: 6rem;
+    height: 5rem;
     position: relative;
     top: 50%;
     @include transform(translateY(-50%));
+  }
+
+  h1, p {
+    margin: 0;
+  }
+
+  .project-number {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  .overlay {
+    position: absolute;
+  }
+
+  .mobile-project-info {
+    text-align: left;
+    margin-top: 50vh;
+
+    h1, p {
+      margin-bottom: 1rem;
+    }
   }
 }
 
@@ -386,6 +410,13 @@ button {
   opacity: 0;
   display: none;
   top: 0 !important;
+}
+
+#telescope-responsive, #godaddy-responsive, #gastronomads-responsive, #foodful-responsive, #contact-responsive {
+  height: 100vh;
+  width: 100vw;
+  padding: 3rem;
+  text-align: center;
 }
 
 #contact-form {

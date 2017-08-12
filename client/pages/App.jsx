@@ -61,6 +61,11 @@ class App extends Component {
         }, 2000);
       }
     });
+
+    const subtitles = ["Frontend Web Developer",
+                      "UI/UX Designer",
+                      "Private Pilot",
+                      "Trivia Enthusiast"];
   }
 
   scroll(down) {
@@ -122,7 +127,7 @@ class App extends Component {
   sendMail() {
     console.log($("#input-name").val());
 
-    axios.get("http://127.0.0.1:3000/")
+    axios.get("/")
       .then(res => {
         console.log(res.data);
       })
@@ -212,18 +217,6 @@ class App extends Component {
       TweenMax.to($(".position"), 0.45, {delay: 2.2, right: "0", ease: Power2.easeOut});
       TweenMax.to(mouse, 0.75, {y: 50, opacity: "0", ease: Elastic.easeIn.config(2, 0.5)});
     }
-
-    // if (next > 1) {
-    //   $("#lines").css("display", "block");
-    //   TweenMax.to($("#lines"), 0.25, {height: "auto", ease: Power2.easeIn});
-    //   TweenMax.to($("#lines"), 0.25, {delay: 0.25, opacity: "1", ease: Power2.easeIn});
-    // }
-    //
-    // else {
-    //   TweenMax.to($("#lines"), 0.25, {opacity: "0", ease: Power2.easeIn});
-    //   TweenMax.to($("#lines"), 0.25, {delay: 0.25, height: "0", ease: Power2.easeIn});
-    //   $("#lines").css("display", "none");
-    // }
 
     if (next === 0) {
       TweenMax.to($(".nav-bar"), 0.45, {top: "-100px", ease: Power2.easeIn});

@@ -5,6 +5,22 @@ import $ from 'jquery';
 import MobileProject from '../components/mobileproject.jsx';
 
 class Mobile extends Component {
+  componentDidMount() {
+    $(document).ready(function() {
+      var winH = $(window).height() - 100;
+      $(window).scroll(function() {
+        if ($(window).scrollTop() > winH) {
+          $('.nav-bar-responsive').css("position", "fixed");
+          $('.nav-bar-responsive').css("display", "block");
+        }
+        if ($(window).scrollTop() <= winH) {
+          $('.nav-bar-responsive').css("display", "none");
+          $('.nav-bar-responsiver').css("position", "static");
+        }
+      });
+    });
+  }
+
   render() {
     return (
       <div className="center">
@@ -17,16 +33,42 @@ class Mobile extends Component {
             <h3 id="landing-sub-head">My name is Cristobal Graña, and I'm a <span id="landing-2-sub-head">Student at UIUC</span></h3>
           </div>
         </div>
-        <MobileProject
-          title="Telescope"
-          description="Development, UI Framework"
-          info="I started learning Vue.js recently, and I noticed there aren't very many
-            UI component frameworks out there, so I decided to make one. I'm still working
-            on it since it's more ambitious than what I'm used to."
-          img="telescope.png"
-          number="01"
-          color="#404e5c"
-          link="https://github.com/cristobalwee/telescope"/>
+        <div id="telescope-responsive">
+          <MobileProject
+            title="Telescope"
+            description="Development, UI Framework"
+            img="telescope.png"
+            number="01"
+            color="#404e5c"
+            link="https://github.com/cristobalwee/telescope"/>
+        </div>
+        <div id="godaddy-responsive">
+          <MobileProject
+            title="GoDaddy"
+            description="UI/UX Design Intern"
+            img="godaddy.png"
+            number="02"
+            color="#3fb54f"
+            link="https://godaddy.com"/>
+        </div>
+        <div id="gastronomads-responsive">
+          <MobileProject
+            title="Gastronomads"
+            description="Design + Development, Website"
+            img="gastronomads.png"
+            number="03"
+            color="#838383"
+            link="https://www.gastronomads.co/"/>
+        </div>
+        <div id="foodful-responsive">
+          <MobileProject
+            title="Foodful"
+            description="Design + Development, Website"
+            img="foodful.png"
+            number="04"
+            color="#d0e8f9"
+            link="https://github.com/cristobalwee/foodful"/>
+        </div>
       </div>
     );
   }
