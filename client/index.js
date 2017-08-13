@@ -6,12 +6,12 @@ import $ from 'jquery';
 
 let isMobile = false;
 
-if (screen.width < 768) {
+if (screen.width < 950) {
   isMobile = true;
 }
 
 $(window).resize(function() {
-  if (window.width < 768) {
+  if (window.width < 950) {
     isMobile = true;
   }
   else {

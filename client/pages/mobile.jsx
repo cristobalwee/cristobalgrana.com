@@ -7,7 +7,7 @@ import MobileProject from '../components/mobileproject.jsx';
 class Mobile extends Component {
   componentDidMount() {
     $(document).ready(function() {
-      var winH = $(window).height() - 100;
+      const winH = $(window).height() - 100;
       $(window).scroll(function() {
         if ($(window).scrollTop() > winH) {
           $('.nav-bar-responsive').css("position", "fixed");
@@ -19,6 +19,26 @@ class Mobile extends Component {
         }
       });
     });
+
+    const landingSubHead2 = $("#landing-2-sub-head");
+    const subtitles = ["Design Technologist",
+                      "UX Engineer",
+                      "Frontend Web Developer",
+                      "UI/UX Designer",
+                      "Private Pilot",
+                      "Trivia Enthusiast",
+                      "Student at UIUC"];
+    // let idx = 0;
+    // setInterval(() => {
+    //   if (idx > 6) {
+    //     idx = 0;
+    //   }
+    //   landingSubHead2.css("opacity", "0");
+    //   setTimeout(() => {
+    //     document.getElementById("landing-2-sub-head").innerHTML = subtitles[idx++];
+    //     landingSubHead2.css("opacity", "1");
+    //   }, 1000);
+    // }, 2500);
   }
 
   render() {

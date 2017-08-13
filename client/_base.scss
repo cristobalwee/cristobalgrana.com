@@ -305,6 +305,10 @@ button {
   position: fixed;
   top: 0;
 
+  #landing-sub-2-head {
+    @include transition(all 0.75s ease);
+  }
+
   h1 {
     font-weight: normal;
     color: black;
@@ -513,9 +517,131 @@ button {
   }
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 950px) {
   body {
     overflow: auto;
+  }
+}
+
+@media only screen and (min-height: 850px) {
+  .project {
+    height: 50rem;
+
+    .project-photo {
+      height: 50rem;
+    }
+
+    .project-info {
+      height: 40rem;
+      margin-top: 5rem;
+    }
+  }
+}
+
+@media only screen and (min-height: 740px) and (max-height: 849px) {
+  .mobile-project {
+    .mobile-project-info {
+      margin-top: 55vh;
+    }
+  }
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 1370px) {
+  .project {
+    .project-info {
+      h1 {
+        font-size: 3rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .project {
+    .project-info {
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+  }
+
+  #about {
+    > div {
+      padding: 0 20%;
+    }
+  }
+}
+
+@media only screen and (max-width: 1125px) {
+  .project {
+    height: 55vh;
+
+    .project-photo {
+      width: 55vw;
+      height: 55vh;
+    }
+
+    .project-info {
+      height: 45vh;
+      width: 30vw;
+      margin-top: 4rem;
+    }
+  }
+}
+
+@media only screen and (orientation: landscape) {
+  .mobile-project-info {
+    margin-top: 30vh;
+  }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 950px) {
+  #landing-responsive {
+    padding: 8rem;
+
+    h1 {
+      font-size: 6rem;
+    }
+
+    h3 {
+      font-size: 3rem;
+    }
+  }
+
+  #telescope-responsive, #godaddy-responsive, #gastronomads-responsive, #foodful-responsive, #contact-responsive {
+    padding: 8rem;
+  }
+
+  .mobile-project {
+    img {
+      height: 10rem;
+    }
+
+    .mobile-project-info {
+      margin-top: 50vh;
+    }
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .mobile-project {
+    h1 {
+      font-size: 3rem;
+    }
+  }
+
+  #foodful-responsive {
+    img {
+      height: 10rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .mobile-project {
+    .overlay {
+      padding: 2rem;
+    }
   }
 }
 

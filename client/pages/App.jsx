@@ -62,10 +62,24 @@ class App extends Component {
       }
     });
 
-    const subtitles = ["Frontend Web Developer",
+    const subtitles = ["Design Technologist",
+                      "UX Engineer",
+                      "Frontend Web Developer",
                       "UI/UX Designer",
                       "Private Pilot",
-                      "Trivia Enthusiast"];
+                      "Trivia Enthusiast",
+                      "Student at UIUC"];
+    // let idx = 0;
+    // setInterval(() => {
+    //   if (idx > 6) {
+    //     idx = 0;
+    //   }
+    //   landingSubHead2.css("opacity", "0");
+    //   setTimeout(() => {
+    //     document.getElementById("landing-2-sub-head").innerHTML = subtitles[idx++];
+    //     landingSubHead2.css("opacity", "1");
+    //   }, 1000);
+    // }, 2500);
   }
 
   scroll(down) {
