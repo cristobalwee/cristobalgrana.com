@@ -7,8 +7,8 @@
   "scripts": {
     "build-css": "node-sass-chokidar client/ -o client/",
     "watch-css": "yarn build-css && node-sass-chokidar client/ -o client/ --watch --recursive",
-    "dev": "webpack-dev-server",
-    "start": "NODE_ENV=production webpack -p --config webpack.production.config.js"
+    "start": "webpack-dev-server",
+    "deploy": "NODE_ENV=production webpack -p --config webpack.production.config.js"
   },
   "dependencies": {
     "axios": "^0.16.2",
