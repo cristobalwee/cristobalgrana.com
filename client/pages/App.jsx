@@ -32,7 +32,7 @@ class App extends Component {
         ["#godaddy-info", "#godaddy-photo"],
         ["#gastronomads-info", "#gastronomads-photo"],
         ["#foodful-info", "#foodful-photo"],
-        ["#contact-form"]
+        ["#contact-head", "#contact-sub-head", "#contact-links"]
       ]
     };
     this.scroll = this.scroll.bind(this);
@@ -378,7 +378,7 @@ class App extends Component {
                 <a target="_blank" href="https://www.behance.net/cristobalw918d"><img className="inline" src="/public/media/behance.svg"></img></a>
               </span>
               <span className="right">
-                <a href="mailto:hellothere@cristobalgrana.com"><h4 className="inline pointer">Hello</h4></a>&nbsp;&nbsp;
+                <a href="mailto:hellothere@cristobalgrana.me"><h4 className="inline pointer">Hello</h4></a>&nbsp;&nbsp;
                 <a href="/public/media/resume.pdf" target="_blank"><h4 className="inline pointer">Resume</h4></a>
               </span>
             </div>
@@ -433,16 +433,13 @@ class App extends Component {
             link="https://github.com/cristobalwee/foodful"/>
         </div>
         <div id="contact" className="center">
-          <div id="contact-form">
-            <div className="content">
-              <h2>Let's talk</h2>
-              <p>Name</p>
-              <input id="input-name" type="text"/>
-              <p>Email</p>
-              <input id="input-email" type="email"/>
-              <p>Comments</p>
-              <textarea id="input-comments" name="comments" cols="40" rows="2"></textarea>
-              <button onClick={this.sendMail.bind(this)}>Send</button>
+          <div className="content">
+            <h1 id="contact-head">Currently <a href="mailto:hellothere@cristobalgrana.me"><span className="underline">for hire</span></a></h1>
+            <h4 id="contact-sub-head">Willing to work in exchange for Shackburgers</h4>
+            <div id="contact-links">
+              <a target="_blank" href="https://www.linkedin.com/in/cristobal-grana-samanez"><img className="inline" src="/public/media/linkedin.svg"></img></a>
+              <a target="_blank" href="https://github.com/cristobalwee"><img className="inline" src="/public/media/github.svg"></img></a>
+              <a target="_blank" href="https://www.behance.net/cristobalw918d"><img className="inline" src="/public/media/behance.svg"></img></a>
             </div>
           </div>
         </div>

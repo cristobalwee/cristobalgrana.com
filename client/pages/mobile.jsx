@@ -19,8 +19,12 @@ class Mobile extends Component {
         }
       });
     });
-
+    const landingHead = $("#landing-head");
+    const landingSubHead = $("#landing-sub-head");
     const landingSubHead2 = $("#landing-2-sub-head");
+    this.tweenUp(landingHead, 0.15);
+    this.tweenUp(landingSubHead, 0.3);
+
     const subtitles = ["Design Technologist",
                       "UX Engineer",
                       "Frontend Web Developer",
@@ -39,6 +43,10 @@ class Mobile extends Component {
     //     landingSubHead2.css("opacity", "1");
     //   }, 1000);
     // }, 2500);
+  }
+
+  tweenUp(object, time) {
+    TweenMax.from(object, 0.75, {delay: time, top: "20px", opacity: "0", ease: Elastic.easeOut.config(2, 1)});
   }
 
   render() {
@@ -88,6 +96,25 @@ class Mobile extends Component {
             number="04"
             color="#d0e8f9"
             link="https://github.com/cristobalwee/foodful"/>
+        </div>
+        <div id="contact-responsive">
+          <div>
+            <h1>About Me</h1>
+            <h4>I’m a Math and Computer Science Major at the University of Illinois at Urbana Champaign.
+              I love crafting interfaces and user experiences, and learning about useless facts and trivia.
+              I’m all about working with the frontend of websites to implement minimalist designs.</h4>
+            <div id="contact-icons">
+              <span className="left">
+                <a target="_blank" href="https://www.linkedin.com/in/cristobal-grana-samanez"><img className="inline" src="/public/media/linkedin.svg"></img></a>
+                <a target="_blank" href="https://github.com/cristobalwee"><img className="inline" src="/public/media/github.svg"></img></a>
+                <a target="_blank" href="https://www.behance.net/cristobalw918d"><img className="inline" src="/public/media/behance.svg"></img></a>
+              </span>
+              <span className="right">
+                <a href="mailto:hellothere@cristobalgrana.com"><h4 className="inline pointer">Hello</h4></a>&nbsp;&nbsp;
+                <a href="/public/media/resume.pdf" target="_blank"><h4 className="inline pointer">Resume</h4></a>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     );

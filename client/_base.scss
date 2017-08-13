@@ -92,6 +92,10 @@ button {
   cursor: pointer;
 }
 
+.underline {
+  text-decoration: underline !important;
+}
+
 .overlay {
   position: relative;
   width: 100%;
@@ -287,15 +291,12 @@ button {
   top: 0;
   left: 0;
   @include transition(all 0.75s ease);
-  display: none;
+  text-align: center;
 
   img {
     margin: 0 auto;
     position: relative;
-    top: 50vh;
-    @include transform(translateY(-50%));
-    animation: load 1s both ease-in-out infinite;
-    height: 10rem;
+    height: 8rem;
   }
 }
 
@@ -407,7 +408,43 @@ button {
   }
 }
 
-#telescope, #godaddy, #gastronomads, #foodful, #contact {
+#contact {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  opacity: 0;
+  display: none;
+  top: 0 !important;
+  text-align: center;
+
+  h1 {
+    color: black;
+    position: relative;
+    margin-bottom: 20px;
+
+    a {
+      color: black;
+      text-decoration: underline !important;
+    }
+  }
+
+  h4 {
+    color: $gray;
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  img {
+    height: 2.5rem;
+    margin: 1rem;
+
+    &:hover {
+      fill: black;
+    }
+  }
+}
+
+#telescope, #godaddy, #gastronomads, #foodful {
   height: 100%;
   width: 100%;
   position: fixed;
@@ -514,6 +551,42 @@ button {
     font-size: 2rem;
     position: relative;
     line-height: 150%;
+  }
+}
+
+#contact-responsive {
+  > div {
+    text-align: left;
+
+    h1 {
+      color: black;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    h4 {
+      text-align: justify;
+      color: $gray;
+      line-height: 180%;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    #contact-icons {
+      position: relative;
+      min-height: 3rem;
+
+      img {
+        height: 2.5rem;
+        margin-right: 1rem;
+      }
+
+      h4 {
+        color: $gray;
+        text-decoration: underline;
+        margin-left: 1rem;
+      }
+    }
   }
 }
 
