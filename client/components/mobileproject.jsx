@@ -5,7 +5,7 @@ import $ from 'jquery';
 
 const MobileProject = (props) => {
   return (
-    <div className="mobile-project center" style={{backgroundColor: props.color}}>
+    <div className="mobile-project center content-fix" style={{backgroundColor: props.color}}>
       <img className="inline" src={"/public/media/" + props.img}></img>
       <div className="overlay">
         <div className="left mobile-project-info">

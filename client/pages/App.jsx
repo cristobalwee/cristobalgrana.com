@@ -138,20 +138,9 @@ class App extends Component {
     TweenMax.to(object, 0.1, {delay: time, display: "block", opacity: "1"});
   }
 
-  sendMail() {
-    console.log($("#input-name").val());
-
-    axios.get("/")
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
   renderNext(current, next, tweensOut, tweensIn) {
-    var mouse = $("#mouse-anim");
+    const mouse = $("#mouse-anim");
+    const self = this;
 
     if (next === current) {
       return;
@@ -260,7 +249,6 @@ class App extends Component {
         });
 
         this.state.currPos = next;
-        console.log(this.state);
         tweensOut.reverse();
         return;
       }
@@ -278,7 +266,6 @@ class App extends Component {
       });
 
       this.state.currPos = next;
-      console.log(this.state);
       tweensOut.reverse();
       return;
     }
@@ -298,7 +285,6 @@ class App extends Component {
         });
 
         this.state.currPos = next;
-        console.log(this.state);
         return;
       }
 
@@ -315,7 +301,6 @@ class App extends Component {
       });
 
       this.state.currPos = next;
-      console.log(this.state);
       return;
     }
 
@@ -332,7 +317,6 @@ class App extends Component {
     });
 
     this.state.currPos = next;
-    console.log(this.state);
   }
 
   render() {
@@ -387,10 +371,10 @@ class App extends Component {
         <div id="telescope" className="center">
           <Project
             title="Telescope"
-            description="Development, UI Framework"
+            description="Design + Development, UI Framework"
             info="I started learning Vue.js recently, and I noticed there aren't very many
-              UI component frameworks out there, so I decided to make one. I'm still working
-              on it since it's more ambitious than what I'm used to."
+            UI component frameworks out there, so I decided to make one. I'm still working
+            on it since it's more ambitious than what I'm used to."
             img="telescope.png"
             number="01"
             color="#404e5c"
@@ -400,8 +384,8 @@ class App extends Component {
           <Project
             title="GoDaddy"
             description="UI/UX Design Intern"
-            info="I’m currently interning at GoDaddy in Scottsdale, AZ as part of the Hosting
-            UI team. My job is mainly to write and maintain components for the shared GoDaddy
+            info="I interned at GoDaddy in Scottsdale, AZ as part of the Hosting UI team.
+            My job was mainly UX engineering and writing components for the shared GoDaddy
             react framework."
             img="godaddy.png"
             number="02"
@@ -412,9 +396,9 @@ class App extends Component {
           <Project
             title="Gastronomads"
             description="Design + Development, Website"
-            info="My brother wants to be a food writer and asked me to make him a simple blog
-            so that he could get some more exposure. I decided to use Meteor so that I could
-            learn another framework."
+            info="My brother wants to be a food writer and asked me to make him a cool website,
+            so I did. I ended up using Meteor because I wanted to mix it up, which was cool (it
+            was also really easy to use)."
             img="gastronomads.png"
             number="03"
             color="#838383"
@@ -433,7 +417,7 @@ class App extends Component {
             link="https://github.com/cristobalwee/foodful"/>
         </div>
         <div id="contact" className="center">
-          <div className="content">
+          <div className="content-fix">
             <h1 id="contact-head">Currently <a href="mailto:hellothere@cristobalgrana.me"><span className="underline">for hire</span></a></h1>
             <h4 id="contact-sub-head">Willing to work in exchange for Shackburgers</h4>
             <div id="contact-links">

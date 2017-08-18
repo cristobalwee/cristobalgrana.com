@@ -60,6 +60,9 @@ class Mobile extends Component {
             <h1 id="landing-head">Hello there</h1>
             <h3 id="landing-sub-head">My name is Cristobal Graña, and I'm a <span id="landing-2-sub-head">Student at UIUC</span></h3>
           </div>
+          <div id="down-arrow">
+            <img src="/public/media/arrow.svg"></img>
+          </div>
         </div>
         <div id="telescope-responsive">
           <MobileProject
@@ -98,21 +101,13 @@ class Mobile extends Component {
             link="https://github.com/cristobalwee/foodful"/>
         </div>
         <div id="contact-responsive">
-          <div>
-            <h1>About Me</h1>
-            <h4>I’m a Math and Computer Science Major at the University of Illinois at Urbana Champaign.
-              I love crafting interfaces and user experiences, and learning about useless facts and trivia.
-              I’m all about working with the frontend of websites to implement minimalist designs.</h4>
+          <div className="content-fix">
+            <h1 id="contact-head">Currently <a href="mailto:hellothere@cristobalgrana.me"><span className="underline">for hire</span></a></h1>
+            <h4 id="contact-sub-head">Willing to work in exchange for Shackburgers. <a href="/public/media/resume.pdf" target="_blank">Resume</a></h4>
             <div id="contact-icons">
-              <span className="left">
-                <a target="_blank" href="https://www.linkedin.com/in/cristobal-grana-samanez"><img className="inline" src="/public/media/linkedin.svg"></img></a>
-                <a target="_blank" href="https://github.com/cristobalwee"><img className="inline" src="/public/media/github.svg"></img></a>
-                <a target="_blank" href="https://www.behance.net/cristobalw918d"><img className="inline" src="/public/media/behance.svg"></img></a>
-              </span>
-              <span className="right">
-                <a href="mailto:hellothere@cristobalgrana.com"><h4 className="inline pointer">Hello</h4></a>&nbsp;&nbsp;
-                <a href="/public/media/resume.pdf" target="_blank"><h4 className="inline pointer">Resume</h4></a>
-              </span>
+              <a target="_blank" href="https://www.linkedin.com/in/cristobal-grana-samanez"><img className="inline" src="/public/media/linkedin.svg"></img></a>
+              <a target="_blank" href="https://github.com/cristobalwee"><img className="inline" src="/public/media/github.svg"></img></a>
+              <a target="_blank" href="https://www.behance.net/cristobalw918d"><img className="inline" src="/public/media/behance.svg"></img></a>
             </div>
           </div>
         </div>

@@ -460,67 +460,6 @@ button {
   text-align: center;
 }
 
-#contact-form {
-  position: relative;
-
-  h2 {
-    color: white;
-    text-align: center;
-  }
-
-  p {
-    color: white;
-    text-align: left;
-    margin-bottom: 0;
-  }
-
-  > div {
-    width: 40vw;
-    height: 55vh;
-    background-color: rgba(0, 0, 0, 0.65);
-    padding: 2rem 3rem;
-    text-align: center;
-    margin: 0 auto;
-
-    input {
-      border: none;
-      border-bottom: solid 1px white;
-      background-color: transparent;
-      outline: none;
-      box-shadow: none;
-      margin: 0.5rem 0;
-      margin-bottom: 1rem;
-      width: 100%;
-      padding: 0.5rem;
-      color: white;
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
-
-    textarea {
-      border: none;
-      border-bottom: solid 1px white;
-      color: white;
-      box-shadow: none;
-      margin-bottom: 2rem;
-      background-color: rgba(0, 0, 0, 0);
-      width: 100%;
-      padding: 0.5rem;
-    }
-
-    button {
-      background-color: white;
-      color: black;
-      padding: 0.5rem 2.5rem;
-      position: relative;
-      font-size: 1.5rem;
-      margin: 0 auto;
-    }
-  }
-}
-
 #landing-responsive {
   padding: 3rem;
   height: 100%;
@@ -552,24 +491,44 @@ button {
     position: relative;
     line-height: 150%;
   }
+
+  #down-arrow {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    @include transform(translateX(-50%));
+    animation: arrowanim 0.25s both ease-in-out;
+    animation-delay: 0.55s;
+  }
 }
 
 #contact-responsive {
   > div {
-    text-align: left;
+    text-align: center;
 
     h1 {
       color: black;
       position: relative;
       margin-bottom: 20px;
+      margin-top: 0;
+
+      a {
+        color: black;
+        text-decoration: underline !important;
+      }
     }
 
     h4 {
-      text-align: justify;
       color: $gray;
       line-height: 180%;
       position: relative;
       margin-bottom: 20px;
+      margin-top: 0;
+
+      a {
+        color: $gray;
+        text-decoration: underline !important;
+      }
     }
 
     #contact-icons {
@@ -577,8 +536,9 @@ button {
       min-height: 3rem;
 
       img {
-        height: 2.5rem;
-        margin-right: 1rem;
+        height: 3rem;
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
       }
 
       h4 {
@@ -752,6 +712,12 @@ button {
   100% {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes arrowanim {
+  from {
+    bottom: -20px;
   }
 }
 
