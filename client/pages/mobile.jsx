@@ -49,6 +49,10 @@ class Mobile extends Component {
     TweenMax.from(object, 0.75, {delay: time, top: "20px", opacity: "0", ease: Elastic.easeOut.config(2, 1)});
   }
 
+  scroll() {
+    $('html,body').animate({scrollTop: $("#telescope-responsive").offset().top}, 'slow');
+  }
+
   render() {
     return (
       <div className="center">
@@ -62,6 +66,12 @@ class Mobile extends Component {
           </div>
           <div id="down-arrow">
             <img src="/public/media/arrow.svg"></img>
+          </div>
+          <div className="bottom center expanded">
+            <div className="mouse center link" onClick={this.scroll}>
+              <div className="scrollwheel">
+              </div>
+            </div>
           </div>
         </div>
         <div id="telescope-responsive">
