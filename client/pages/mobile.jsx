@@ -64,9 +64,6 @@ class Mobile extends Component {
             <h1 id="landing-head">Hello there</h1>
             <h3 id="landing-sub-head">My name is Cristobal Graña, and I'm a <span id="landing-2-sub-head">Student at UIUC</span></h3>
           </div>
-          <div id="down-arrow">
-            <img src="/public/media/arrow.svg"></img>
-          </div>
           <div className="bottom center expanded">
             <div className="mouse center link" onClick={this.scroll}>
               <div className="scrollwheel">

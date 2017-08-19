@@ -497,16 +497,6 @@ button {
     line-height: 150%;
   }
 
-  #down-arrow {
-    position: absolute;
-    bottom: 3rem;
-    left: 50%;
-    @include transform(translateX(-50%));
-    animation: arrowanim 0.25s both ease-in-out;
-    animation-delay: 0.55s;
-    display: none;
-  }
-
   .mouse {
     animation: footeranim 1s both ease-in-out;
     width: 30px;
