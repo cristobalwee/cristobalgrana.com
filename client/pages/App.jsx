@@ -62,6 +62,22 @@ class App extends Component {
       }
     });
 
+    const self = this;
+    document.onkeydown = function (e) {
+      switch (e.key) {
+        case 'ArrowUp':
+          if (self.state.currPos > 0) {
+            self.renderNext(self.state.currPos, self.state.currPos - 1, self.state.tweens[self.state.currPos], self.state.tweens[self.state.currPos - 1]);
+          }
+          break;
+        case 'ArrowDown':
+          if (self.state.currPos < 6) {
+            self.renderNext(self.state.currPos, self.state.currPos + 1, self.state.tweens[self.state.currPos], self.state.tweens[self.state.currPos + 1]);
+          }
+          break;
+        }
+    };
+
     const subtitles = ["Design Technologist",
                       "UX Engineer",
                       "Frontend Web Developer",
