@@ -3,6 +3,7 @@ import '../styles.scss';
 import { TimelineMax, TweenMax } from 'gsap';
 import $ from 'jquery';
 import axios from 'axios';
+import Swipeable from 'react-swipeable';
 
 import Project from '../components/project.jsx';
 
@@ -36,6 +37,8 @@ class App extends Component {
       ]
     };
     this.scroll = this.scroll.bind(this);
+    this.swipedUp = this.swipedUp.bind(this);
+    this.swipedDown = this.swipedDown.bind(this);
   }
 
   componentDidMount() {
@@ -111,6 +114,20 @@ class App extends Component {
       }
       this.renderNext(this.state.currPos, this.state.currPos - 1, this.state.tweens[this.state.currPos], this.state.tweens[this.state.currPos - 1]);
     }
+  }
+
+  swipedDown(e, deltaY, isFlick) {
+    if (this.state.currPos === 0) {
+      return;
+    }
+    this.renderNext(this.state.currPos, this.state.currPos - 1, this.state.tweens[this.state.currPos], this.state.tweens[this.state.currPos - 1]);
+  }
+
+  swipedUp(e, deltaY, isFlick) {
+    if (this.state.currPos === 6) {
+      return;
+    }
+    this.renderNext(this.state.currPos, this.state.currPos + 1, this.state.tweens[this.state.currPos], this.state.tweens[this.state.currPos + 1]);
   }
 
   onRepeat(tl) {
@@ -337,7 +354,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <Swipeable onSwipedUp={this.swipedUp} onSwipedDown={this.swipedDown}>
         <div className="nav-bar">
           <img className="pointer" onClick={() => this.renderNext(this.state.currPos, 0, this.state.tweens[this.state.currPos], this.state.tweens[0])} src="/public/media/logo.svg"></img>
         </div>
@@ -443,7 +460,7 @@ class App extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Swipeable>
     );
   }
 }
