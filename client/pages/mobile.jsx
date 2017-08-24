@@ -74,7 +74,7 @@ class Mobile extends Component {
         <div id="telescope-responsive">
           <MobileProject
             title="Telescope"
-            description="Development, UI Framework"
+            description="Design + Development, UI Framework"
             img="telescope.png"
             number="01"
             color="#404e5c"
