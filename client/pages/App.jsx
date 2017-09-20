@@ -27,8 +27,8 @@ class TextScramble {
     for (let i = 0; i < length; i++) {
       const from = oldText[i] || '';
       const to = newText[i] || '';
-      const start = Math.floor(Math.random() * 40);
-      const end = start + Math.floor(Math.random() * 40);
+      const start = Math.floor(Math.random() * 80);
+      const end = start + Math.floor(Math.random() * 80);
       this.queue.push({ from, to, start, end });
     }
 
@@ -150,22 +150,22 @@ class App extends Component {
       "Student at UIUC"
     ];
 
-    setTimeout(() => {
-      landingSubHead2.addClass("text");
-
-      const el = document.querySelector('.text');
-      const fx = new TextScramble(el);
-
-      let counter = 0;
-      const next = () => {
-        fx.setText(phrases[counter]).then(() => {
-          setTimeout(next, 1200);
-        })
-        counter = (counter + 1) % phrases.length;
-      }
-
-      next();
-    }, 1200);
+    // setTimeout(() => {
+    //   landingSubHead2.addClass("text");
+    //
+    //   const el = document.querySelector('.text');
+    //   const fx = new TextScramble(el);
+    //
+    //   let counter = 0;
+    //   const next = () => {
+    //     fx.setText(phrases[counter]).then(() => {
+    //       setTimeout(next, 1200);
+    //     })
+    //     counter = (counter + 1) % phrases.length;
+    //   }
+    //
+    //   next();
+    // }, 1200);
   }
 
   scroll(down) {

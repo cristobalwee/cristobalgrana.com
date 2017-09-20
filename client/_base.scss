@@ -302,6 +302,10 @@ button {
     position: relative;
     height: 8rem;
   }
+
+  #loader-img {
+    //animation: loader 1.5s both ease-in;
+  }
 }
 
 #landing {
@@ -796,5 +800,11 @@ button {
     opacity: 0;
     height: 0;
     display: none;
+  }
+}
+
+@keyframes loader {
+  50% {
+    @include transform(rotate(360deg));
   }
 }
