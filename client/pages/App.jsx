@@ -92,6 +92,48 @@ class App extends Component {
       "Trivia Enthusiast",
       "Student at UIUC"
     ];
+
+    //this.wordWrap();
+  }
+
+  wordWrap() {
+    const bdy = $("#about-info");
+    const text = $(bdy).text();
+    const html = $(bdy).html();
+    const bWidth = $(bdy).width();
+    let lineCount = 0;
+    let words = text.split(" ");
+    let span = "";
+    let word = "";
+    let allSpans = "";
+    let lastWord = "";
+    $(words).each(function(i, w) {
+      if (lastWord != "") {
+        w = lastWord + " "+ w ;
+        lastWord = "";
+      };
+      word = w + " ";
+      span = span + word;
+      $("#about-info").append(word);
+      if ($("#about-copy").width() >= bWidth) {
+        let wLen = word.length;
+        span = span.slice(0, -wLen);
+        lastWord = w + " ";
+        allSpans = allSpans + "<span id=\"" + lineCount + "\">" + $.trim(span) + "</span>";
+        lineCount++;
+        $("#about-copy").html("");
+        span = "";
+        word = "";
+      }
+    });
+    const lastSpan = "<span>" + $("#about-copy").text() + "</span>";
+    $(bdy).html(allSpans + lastSpan);
+
+    let stateTweens = [];
+
+    for (let i = 0; i < lineCount; i++) {
+      stateTweens.push("#about-info-" + i);
+    }
   }
 
   scroll(down) {
@@ -381,6 +423,7 @@ class App extends Component {
             <h4 id="about-info">I’m a Math and Computer Science Major at the University of Illinois at Urbana Champaign.
               I love crafting interfaces and user experiences, and learning about useless facts and trivia.
               I’m all about working with the frontend of websites to implement minimalist designs.</h4>
+            <h4 id="about-copy"></h4>
             <div id="about-contact">
               <span className="left">
                 <a target="_blank" href="https://www.linkedin.com/in/cristobal-grana-samanez"><img className="inline" src="/public/media/linkedin.svg"></img></a>
