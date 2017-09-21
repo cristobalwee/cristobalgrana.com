@@ -129,11 +129,13 @@ class App extends Component {
     const lastSpan = "<span>" + $("#about-copy").text() + "</span>";
     $(bdy).html(allSpans + lastSpan);
 
-    let stateTweens = [];
+    let stateTweens = ["#about-head"];
 
     for (let i = 0; i < lineCount; i++) {
       stateTweens.push("#about-info-" + i);
     }
+
+    stateTweens.push("#about-contact");
   }
 
   scroll(down) {
