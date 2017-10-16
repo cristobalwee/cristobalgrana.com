@@ -12,7 +12,7 @@ const MobileProject = (props) => {
           <h1 className="inline">{props.title}</h1>
           <h1 className="inline right project-number">{props.number}</h1>
           <p>{props.description}</p>
-          <a href={props.link} target="_blank"><button>check it out</button></a>
+          <a href={props.link} target="_blank" rel="noopener noreferrer"><button>check it out</button></a>
         </div>
       </div>
     </div>

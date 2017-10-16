@@ -428,13 +428,13 @@ class App extends Component {
             <h4 id="about-copy"></h4>
             <div id="about-contact">
               <span className="left">
-                <a target="_blank" href="https://www.linkedin.com/in/cristobal-grana-samanez"><img className="inline" src="/public/media/linkedin.svg"></img></a>
-                <a target="_blank" href="https://github.com/cristobalwee"><img className="inline" src="/public/media/github.svg"></img></a>
-                <a target="_blank" href="https://www.behance.net/cristobalw918d"><img className="inline" src="/public/media/behance.svg"></img></a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/cristobal-grana-samanez"><img className="inline" src="/public/media/linkedin.svg"></img></a>
+                <a target="_blank" rel="noopener noreferrer" href="https://github.com/cristobalwee"><img className="inline" src="/public/media/github.svg"></img></a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.behance.net/cristobalw918d"><img className="inline" src="/public/media/behance.svg"></img></a>
               </span>
               <span className="right">
                 <a href="mailto:hellothere@cristobalgrana.me"><h4 className="inline pointer">Hello</h4></a>&nbsp;&nbsp;
-                <a href="/public/media/resume.pdf" target="_blank"><h4 className="inline pointer">Resume</h4></a>
+                <a href="/public/media/resume.pdf" target="_blank" rel="noopener noreferrer"><h4 className="inline pointer">Resume</h4></a>
               </span>
             </div>
           </div>
@@ -492,9 +492,9 @@ class App extends Component {
             <h1 id="contact-head">Currently <a href="mailto:hellothere@cristobalgrana.me"><span className="underline">for hire</span></a></h1>
             <h4 id="contact-sub-head">Willing to work in exchange for Shackburgers</h4>
             <div id="contact-links">
-              <a target="_blank" href="https://www.linkedin.com/in/cristobal-grana-samanez"><img className="inline" src="/public/media/linkedin.svg"></img></a>
-              <a target="_blank" href="https://github.com/cristobalwee"><img className="inline" src="/public/media/github.svg"></img></a>
-              <a target="_blank" href="https://www.behance.net/cristobalw918d"><img className="inline" src="/public/media/behance.svg"></img></a>
+              <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/cristobal-grana-samanez"><img className="inline" src="/public/media/linkedin.svg"></img></a>
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/cristobalwee"><img className="inline" src="/public/media/github.svg"></img></a>
+              <a target="_blank" rel="noopener noreferrer" href="https://www.behance.net/cristobalw918d"><img className="inline" src="/public/media/behance.svg"></img></a>
             </div>
           </div>
         </div>

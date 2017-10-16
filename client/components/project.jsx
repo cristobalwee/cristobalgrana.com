@@ -14,7 +14,7 @@ const Project = (props) => (
         <h1 className="inline right">{props.number}</h1>
         <p>{props.description}</p>
         <p className="justify">{props.info}</p>
-        <a href={props.link} target="_blank"><button>check it out</button></a>
+        <a href={props.link} target="_blank" rel="noopener noreferrer"><button>check it out</button></a>
       </div>
     </div>
   </div>
